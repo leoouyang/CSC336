@@ -1,0 +1,55 @@
+we can obtain P by interchange two rows of I. From the properties of determinant, we know that interchanging any pair of columns or rows of a matrix multiplies its determinant by -1. So for $P_k \neq I, det(P_k) = -1 * det(I) = -1 * 1 = -1$
+
+
+3131004
+
+Now we can caluate L using the method from textbook
+$$
+L = (M_2P_2M_1P_1)^{-1} = P_1^TL_1P_2^TL_2 = 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix} 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+-1/2 & 1 & 0\\
+1/2 & 0 & 1
+\end{bmatrix} 
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+0 & 1 & 0\\
+0 & 1/3 & 1
+\end{bmatrix} 
+ = 
+ \begin{bmatrix}
+-1/2 & 1/3 & 1\\ 
+1 & 0 & 0\\
+1/2 & 1 & 0
+\end{bmatrix} 
+$$
+What we get now is A = LU with L being a permutation of a lower triangular matrix. To transform it into the standard PA = LU, L is tranformed to standard shape using P:
+$$
+L = 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+-1/2 & 1/3 & 1\\ 
+1 & 0 & 0\\
+1/2 & 1 & 0
+\end{bmatrix} 
+ = 
+ \begin{bmatrix}
+1 & 0 & 0\\
+1/2 & 1 & 0\\
+-1/2 & 1/3 & 1\\ 
+\end{bmatrix} 
+$$

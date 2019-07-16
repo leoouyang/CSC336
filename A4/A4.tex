@@ -1,0 +1,376 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt]{article}
+%\documentclass[11pt]{article}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{subcaption}
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{amsmath}
+\usepackage{framed}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassTime): \hmwkTitle} % Top center head
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+%\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+%\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+%\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+%\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+\setcounter{homeworkProblemCounter}{0}
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment 4} % Assignment title
+\newcommand{\hmwkDueDate}{Wednesday, Dec 5, 2018} % Due date
+\newcommand{\hmwkClass}{CSC336} % Course/class
+\newcommand{\hmwkClassTime}{LEC 0101} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Zhongtian Ouyang} % Your name
+\newcommand{\hmwkAuthorID}{1002341012} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}\\ \textbf{\hmwkAuthorID}}
+
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------\
+\begin{document}
+
+\maketitle
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	Common Tools
+%----------------------------------------------------------------------------------------
+%\begin{framed}
+%\begin{lstlisting}[language=matlab]
+%\end{lstlisting}
+%\end{framed}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.6\linewidth]{q10a.png}
+%\label{fig:q10a}
+%\end{figure}\\
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+\noindent \textit{Find root using Newton's Method and Secant Method}\\
+
+a)\\
+Code:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+x0 = 1;
+xprev = x0;
+fprintf("%1s %20s %20s\n", "n", "x(n)", "x(n)-sqrt(2)");
+fprintf("%1d %20.15f %20.15f\n", 0, x0, x0-sqrt(2));
+for n = 1:5
+    xn = xprev - (xprev^2 - 2)/(2*xprev);
+    xprev = xn;
+    fprintf("%1d %20.15f %20.15f\n", n, xn, xn-sqrt(2));
+end
+\end{lstlisting}
+\end{framed}
+Output:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+n                 x(n)         x(n)-sqrt(2)
+0    1.000000000000000   -0.414213562373095
+1    1.500000000000000    0.085786437626905
+2    1.416666666666667    0.002453104293572
+3    1.414215686274510    0.000002123901415
+4    1.414213562374690    0.000000000001595
+5    1.414213562373095    0.000000000000000
+\end{lstlisting}
+\end{framed}
+b)\\
+Code:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+x0 = 1;
+x1 = 2;
+xprev = x0;
+xcur = x1;
+f = @(x)x^2 - 2;
+fprintf("%1s %20s %20s\n", "n", "x(n)", "x(n)-sqrt(2)");
+fprintf("%1d %20.15f %20.15f\n", 0, x0, x0-sqrt(2));
+fprintf("%1d %20.15f %20.15f\n", 1, x1, x1-sqrt(2));
+for n = 2:7
+    xn = xcur - f(xcur)*(xcur-xprev)/(f(xcur) - f(xprev));
+    xprev = xcur;
+    xcur = xn;
+    fprintf("%1d %20.15f %20.15f\n", n, xn, xn-sqrt(2));
+end
+\end{lstlisting}
+\end{framed}
+Output:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+n                 x(n)         x(n)-sqrt(2)
+0    1.000000000000000   -0.414213562373095
+1    2.000000000000000    0.585786437626905
+2    1.333333333333333   -0.080880229039762
+3    1.400000000000000   -0.014213562373095
+4    1.414634146341463    0.000420583968368
+5    1.414211438474870   -0.000002123898225
+6    1.414213562057320   -0.000000000315775
+7    1.414213562373095    0.000000000000000
+\end{lstlisting}
+\end{framed}
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Convergence Properties based on g'(x*)}\\
+
+(a)\\
+$g_1(x): g_1'(x) = \frac{2}{3}x, g_1'(2) = \frac{4}{3}$. Since $|g_1'(2)| > 1$, fixed-point iteration will diverge.\\
+$g_2(x): g_2'(x) = \frac{3}{2\sqrt{3x-2}}, g_2'(2) = \frac{3}{2\sqrt{3\times2-2}} = \frac{3}{4}$ . Since $|g_2'(2)| < 1$ and $g_2'(2) > 0$, the fixed-point iteration converges linearly with C = 3/4 and the iterates approach the fixed-point from one side.\\
+$g_3(x): g_3'(x) = \frac{2}{x^2}, g_3'(2) =\frac{1}{2}$. Since $|g_3'(2)| < 1$ and $g_3'(2) > 0$, the fixed-point iteration converges linearly with C = 1/2 and the iterates approach the fixed-point from one side.\\
+$g_4(x): g_4'(x) = \frac{2(x^2 - 3x + 2)}{(2x - 3)^2}, g_4'(2) = 0$. Since $|g_4'(2)| = 0$ and $g_4''(2) \neq 0$, the fixed-point iteration converges quadratically.\\
+
+b)\\
+Code:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+g = {@(x) (x^2+2)/3;
+	@(x) sqrt(3*x - 2);
+	@(x) 3-2/x;
+	@(x) (x^2-2)/(2*x-3);};
+x0 = 2.05;
+for i = 1:length(g)
+    fprintf("function g%d:\n",i);
+    fprintf("%1s %12s %12s %12s\n","n", "x", "Error", "C value");
+    x = x0;
+    prev_error = x - 2;
+    for j=1:5
+        x = g{i}(x);
+        error = x - 2;
+        fprintf("%1d %12f %12e %12e\n", j, x, error, error/prev_error);
+        prev_error = error;
+    end
+end
+\end{lstlisting}
+\end{framed}
+Output:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function g1:
+n            x        Error      C value
+1     2.067500 6.750000e-02 1.350000e+00
+2     2.091519 9.151875e-02 1.355833e+00
+3     2.124817 1.248169e-01 1.363840e+00
+4     2.171616 1.716156e-01 1.374939e+00
+5     2.238638 2.386381e-01 1.390539e+00
+function g2:
+n            x        Error      C value
+1     2.037155 3.715488e-02 7.430976e-01
+2     2.027675 2.767469e-02 7.448467e-01
+3     2.020649 2.064942e-02 7.461481e-01
+4     2.015428 1.542756e-02 7.471184e-01
+5     2.011537 1.153739e-02 7.478430e-01
+function g3:
+n            x        Error      C value
+1     2.024390 2.439024e-02 4.878049e-01
+2     2.012048 1.204819e-02 4.939759e-01
+3     2.005988 5.988024e-03 4.970060e-01
+4     2.002985 2.985075e-03 4.985075e-01
+5     2.001490 1.490313e-03 4.992548e-01
+function g4:
+n            x        Error      C value
+1     2.002273 2.272727e-03 4.545455e-02
+2     2.000005 5.141917e-06 2.262443e-03
+3     2.000000 2.643885e-11 5.141828e-06
+4     2.000000 0.000000e+00 0.000000e+00
+5     2.000000 0.000000e+00          NaN
+\end{lstlisting}
+\end{framed}
+From the output we can see our analysis in part (a) are correct.\\
+g1: The error increases, showing the iteration diverges as we expected. Also, the C is greater than 1 and keeps increasing.\\
+g2: The error decrease linearly. The convergence rate is linear. The C value is around and approach 0.75. The errors have the same sign.\\
+g3: The error decrease linearly. The convergence rate is linear. The C value is around and approach 0.5. The errors have the same sign.\\
+g4: The error decrease about quadratically. The convergence rate is qudratic. The C value squared every iteration.\\
+\end{homeworkProblem}
+\clearpage
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Use matlab fzero}\\
+
+fun(x) is the function we are finding the root of. With some testing, I found out the fun(v0), where v0 is the volume calculated using ideal gas law, is always positive in our case, so if we can find a value v1 such that fun(v1) is negative, we get our interval. I choose that value to be 0.04266. Since $(p + a/v^2) \geq 0$ and $-(R * T)\leq 0$, if $(v-b)<0, fun(v)<0$. When $v = 0.04, v-b = 0.04 - b = 0.04 - 0.04267 = -0.00267 < 0$
+Code:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+R = 0.082054;
+a = 3.592;
+b = 0.04267;
+T = 300;
+Ps = [1 10 100];
+
+fprintf("%8s %22s %22s\n", "Pressure", "Van Der Waals Volume", "Ideal Gas Law Volume")
+for i = 1:3
+    p = Ps(i);
+    fun = @(v)(p + a/v^2)*(v - b) - R * T;
+    v0 = R * T / p;
+    v = fzero(fun, [0.04 v0]);
+    fprintf("%8d %22e %22e\n", p, v, v0)
+end
+\end{lstlisting}
+\end{framed}
+Output:
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+Pressure   Van Der Waals Volume   Ideal Gas Law Volume
+       1           2.451259e+01           2.461620e+01
+      10           2.354496e+00           2.461620e+00
+     100           7.951083e-02           2.461620e-01
+\end{lstlisting}
+\end{framed}
+From the output, we can see that as pressure increases, the difference between the volume calculated using Van Der Waals equation and the volume calculated using Ideal Gas Law increases. Also, the volume from ideal gas law is always greater than the volume from Van Der Waals.
+\end{homeworkProblem}
+\clearpage
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Newton's method}\\
+
+a)\\
+To approximate r, which is the root for function $f(x) = 1/x - b$, using newtons method, we do one iteration using $x_{k+1} = x_k - f(x_k)/f'(x_k)$. In our case, $r_1 = r_0 - f(r_0)/f'(r_0)$. It is possible to avoid divisions by rearranging the $f(x)/f'(x)$ part of the formula
+$$\frac{f(x)}{f'(x)} = \frac{1/x - b}{-(1/x^2)} =  (\frac{1}{x} - b)(-x^2) = -\frac{x^2}{x} + bx^2 = -x + bx^2, x \neq 0$$
+So with the rearranged formula, $r_1 = r_0 -  (-r_0 + br_0^2) = 2r_0 - br_0^2\\$
+
+b)\\
+From part (a), we get $r_1 = 2r_0 - br_0^2$. $r = 1/b \rightarrow b = 1/r$ since $b,r \neq 0$
+$$\frac{r-r_1}{r} = \frac{r - 2r_0 + br_0^2}{r} = \frac{r - 2r_0 + \frac{1}{r}r_0^2}{r} = \frac{r(r - 2r_0 + \frac{1}{r}r_0^2)}{r \times r} = \frac{r^2 - 2rr_0 + r_0^2}{r^2} = \frac{(r-r_0)^2}{r^2} = (\frac{r-r_0}{r})^2$$
+c)\\
+Since relative error is squared after one iteration. Suppose the error for $r_0$ can be expressed as $a \times 10^b$, then error for $r_1$ is $a^2 \times 10^{2b}$ where $1 \leq a^2 < 100$. So $a^2 \times 10^{2b} \in [1 \times 10^2b, 9.999... \times 10^{2b + 1}]$. From week 1 lecture notes, we know that if two number's relative error $\in [10^{-p-1}, 10 {-p + 1}]$, the two numbers agree to p digits. In our case, $r_0$ and $r$ agree to about b digits, $r_1$ and $r$ agree to about 2b digits. $r_1$ has roughly twice as many correct digits as $r_0$ has.
+
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+\end{document}

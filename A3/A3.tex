@@ -1,0 +1,1063 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article}
+%\documentclass[11pt]{article}
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{subcaption}
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{amsmath}
+\usepackage{framed}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+% Set up the header and footer
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName} % Top left header
+\chead{\hmwkClass\ (\hmwkClassTime): \hmwkTitle} % Top center head
+%\rhead{\firstxmark} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT STRUCTURE COMMANDS
+%	Skip this unless you know what you're doing
+%----------------------------------------------------------------------------------------
+
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+%\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+%\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+%\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+%\nobreak\extramarks{#1}{}\nobreak
+}
+
+\setcounter{secnumdepth}{0} % Removes default section numbers
+\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
+\setcounter{homeworkProblemCounter}{0}
+
+\newcommand{\homeworkProblemName}{}
+\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
+\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
+\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
+\section{\homeworkProblemName} % Make a section in the document with the custom problem count
+\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
+}{
+\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
+\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
+}
+
+\newcommand{\homeworkSectionName}{}
+\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
+\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
+\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
+\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
+}{
+\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
+}
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CLASS SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\hmwkTitle}{Assignment 3} % Assignment title
+\newcommand{\hmwkDueDate}{Friday, Nov 23, 2018} % Due date
+\newcommand{\hmwkClass}{CSC336} % Course/class
+\newcommand{\hmwkClassTime}{LEC 0101} % Class/lecture time
+\newcommand{\hmwkAuthorName}{Zhongtian Ouyang} % Your name
+\newcommand{\hmwkAuthorID}{1002341012} % Your name
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{
+\vspace{2in}
+\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+\vspace{0.1in}
+\vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}\\ \textbf{\hmwkAuthorID}}
+
+\date{} % Insert date here if you want it to appear below your name
+
+%----------------------------------------------------------------------------------------\
+\begin{document}
+
+\maketitle
+\clearpage
+
+%----------------------------------------------------------------------------------------
+%	Common Tools
+%----------------------------------------------------------------------------------------
+%\begin{framed}
+%\begin{lstlisting}[language=matlab]
+%\end{lstlisting}
+%\end{framed}
+
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.6\linewidth]{q10a.png}
+%\label{fig:q10a}
+%\end{figure}\\
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+\begin{homeworkProblem}
+
+\noindent \textit{Pivoting}\\
+
+a)
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+b = [1; 2];
+x = [1; 1];
+
+fprintf('%12s   %12s   %12s\n', 'gamma', 'error(1)', 'error(2)');
+for k = 1:10
+    gamma = 10^(-2 * k);
+    L = [1 0;1/gamma 1];
+    U = [gamma 1-gamma; 0 2-(1/gamma)];
+    y = L\b;
+    xhat = U\y;
+    error = xhat - x;
+    fprintf('%12e   %12e   %12e\n', gamma, error(1,1), error(2,1));
+end
+\end{lstlisting}
+\end{framed}
+
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+>> A3Q1a
+       gamma       error(1)       error(2)
+1.000000e-02   8.881784e-16   0.000000e+00
+1.000000e-04   -1.101341e-13   0.000000e+00
+1.000000e-06   2.875566e-11   0.000000e+00
+1.000000e-08   5.024759e-09   0.000000e+00
+1.000000e-10   8.274037e-08   0.000000e+00
+1.000000e-12   -2.212172e-05   0.000000e+00
+1.000000e-14   -7.992778e-04   0.000000e+00
+1.000000e-16   1.102230e-01   0.000000e+00
+1.000000e-18   -1.000000e+00   0.000000e+00
+1.000000e-20   -1.000000e+00   0.000000e+00
+\end{lstlisting}
+\end{framed}
+From the above table of output, we can easily obeserve that as the value of gamma decrease, the magnitude of error(1) increase, and eventually reaches -1, which means \^{x}[1,1] evaluates to 0. In this process error(2) is always very close to 0.\\
+
+b)
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+b = [1; 2];
+x = [1; 1];
+P2 = [0 1; 1 0];
+
+fprintf('%12s   %12s   %12s\n', 'gamma', 'error(1)', 'error(2)');
+for k = 1:10
+    gamma = 10^(-2 * k);
+    L2 = [1 0;gamma 1];
+    U2 = [1 1; 0 1-2*gamma];
+    bhat = P2 * b;
+    y = L2\bhat;
+    xhat = U2\y;
+    error = xhat - x;
+    fprintf('%12e   %12e   %12e\n', gamma, error(1,1), error(2,1));
+end
+\end{lstlisting}
+\end{framed}
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+       gamma       error(1)       error(2)
+1.000000e-02   0.000000e+00   0.000000e+00
+1.000000e-04   0.000000e+00   0.000000e+00
+1.000000e-06   0.000000e+00   0.000000e+00
+1.000000e-08   0.000000e+00   0.000000e+00
+1.000000e-10   0.000000e+00   0.000000e+00
+1.000000e-12   0.000000e+00   0.000000e+00
+1.000000e-14   0.000000e+00   0.000000e+00
+1.000000e-16   0.000000e+00   0.000000e+00
+1.000000e-18   0.000000e+00   0.000000e+00
+1.000000e-20   0.000000e+00   0.000000e+00
+\end{lstlisting}
+\end{framed}
+From this new output table, we can see that as gamma decrease, both error(1) and error(2) remain very close to 0. A comparision between result in part (a) and result in part (a) would clearly show that with pivoting, we can get better results when solving linear systems, especially when matrix A have a entry on diagonal with a small absolute value or even 0\\
+
+c)
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+b = [1; 2];
+x = [1; 1];
+
+fprintf('%12s   %12s   %12s\n', 'gamma', 'error(1)', 'error(2)');
+for k = 1:10
+    gamma = 10^(-2 * k);
+    L = [1 0;1/gamma 1];
+    U = [gamma 1-gamma; 0 2-(1/gamma)];
+    y = L\b;
+    xhat = U\y;
+    
+    A = [gamma 1-gamma; 1 1];
+    r = b - A * xhat;
+    z = L\r;
+    e = U\z;
+    x2 = xhat + e;
+    
+    error = x2 - x;
+    fprintf('%12e   %12e   %12e\n', gamma, error(1,1), error(2,1));
+end
+\end{lstlisting}
+\end{framed}
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+       gamma       error(1)       error(2)
+1.000000e-02   0.000000e+00   0.000000e+00
+1.000000e-04   0.000000e+00   0.000000e+00
+1.000000e-06   0.000000e+00   0.000000e+00
+1.000000e-08   0.000000e+00   0.000000e+00
+1.000000e-10   0.000000e+00   0.000000e+00
+1.000000e-12   0.000000e+00   0.000000e+00
+1.000000e-14   0.000000e+00   0.000000e+00
+1.000000e-16   0.000000e+00   0.000000e+00
+1.000000e-18   0.000000e+00   0.000000e+00
+1.000000e-20   0.000000e+00   0.000000e+00
+\end{lstlisting}
+\end{framed}
+As gamma decrease, the accuracy of $\tilde{x}$ keep the same, at least the error is 0 for the first seven digits. The effectiveness of iterative refinement is suprsingly good in our case. With only one iteration, it reduce error to an negligible size. The reason should be that our error was so large as mentioned in textbook.
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Partial Pivoting vs Complete Pivoting}\\
+
+a)\\
+From the question, we know P = I. With that fact, we know $M_k = I - m_ke_k^T$ and $U = M_4M_3M_2M_1A$
+$$
+m_1 = 
+\begin{bmatrix}
+0\\ 
+-1\\
+-1\\
+-1\\
+-1 
+\end{bmatrix},
+M_1A = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+1 & 1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 0 & 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+-1 & 1 & 0 & 0 & 1 \\
+-1 & -1 & 1 & 0 & 1 \\
+-1 & -1 & -1 & 1 & 1 \\
+-1 & -1 & -1 & -1 & 1
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & -1 & 1 & 0 & 2 \\
+0 & -1 & -1 & 1 & 2 \\
+0 & -1 & -1 & -1 & 2
+\end{bmatrix} 
+$$
+$$
+m_2 = 
+\begin{bmatrix}
+0\\ 
+0\\
+-1\\
+-1\\
+-1 
+\end{bmatrix},
+M_2(M_1A) = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 0 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & -1 & 1 & 0 & 2 \\
+0 & -1 & -1 & 1 & 2 \\
+0 & -1 & -1 & -1 & 2
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 4 \\
+0 & 0 & -1 & 1 & 4 \\
+0 & 0 & -1 & -1 & 4
+\end{bmatrix} 
+$$
+$$
+m_3 = 
+\begin{bmatrix}
+0\\ 
+0\\
+0\\
+-1\\
+-1 
+\end{bmatrix},
+M_3(M_2M_1A) = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 4 \\
+0 & 0 & -1 & 1 & 4 \\
+0 & 0 & -1 & -1 & 4
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 4 \\
+0 & 0 & 0 & 1 & 8 \\
+0 & 0 & 0 & -1 & 8
+\end{bmatrix} 
+$$
+$$
+m_4 = 
+\begin{bmatrix}
+0\\ 
+0\\
+0\\
+0\\
+-1 
+\end{bmatrix},
+M_4(M_3M_2M_1A) = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 & 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 4 \\
+0 & 0 & 0 & 1 & 8 \\
+0 & 0 & 0 & -1 & 8
+\end{bmatrix} 
+=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 2 \\
+0 & 0 & 1 & 0 & 4 \\
+0 & 0 & 0 & 1 & 8 \\
+0 & 0 & 0 & 0 & 16
+\end{bmatrix} 
+ = U
+$$
+For L, we can use the formula we derived in lecture:
+$$
+L = I + m_1e_1^T + m_2e_2^T + m_3e_3^T + m_4e_4^T = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+-1 & 1 & 0 & 0 & 0 \\
+-1 & -1 & 1 & 0 & 0 \\
+-1 & -1 & -1 & 1 & 0 \\
+-1 & -1 & -1 & -1 & 1
+\end{bmatrix} 
+$$
+
+b)\\
+Still P = I, so $AQ = LU, M_4M_3M_2M_1AQ_1Q_2Q_3Q_4 = U, L = M_1^{-1}M_2^{-1}M_3^{-1}M_4^{-1}$
+$$
+Q_1=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 0 & 0
+\end{bmatrix}
+, AQ_1=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+1 & 1 & 0 & 0 & -1 \\
+1 & -1 & 1 & 0 & -1 \\
+1 & -1 & -1 & 1 & -1 \\
+1 & -1 & -1 & -1 & -1
+\end{bmatrix}
+$$
+$$
+M_1 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+-1 & 1 & 0 & 0 & 0 \\
+-1 & 0 & 1 & 0 & 0 \\
+-1 & 0 & 0 & 1 & 0 \\
+-1 & 0 & 0 & 0 & 1
+\end{bmatrix}
+, M_1AQ_1 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 1 \\ 
+0 & 1 & 0 & 0 & -2 \\
+0 & -1 & 1 & 0 & -2 \\
+0 & -1 & -1 & 1 & -2 \\
+0 & -1 & -1 & -1 & -2
+\end{bmatrix}
+$$
+
+$$
+Q_2=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 1 & 0 & 0 & 0
+\end{bmatrix}
+, M_1AQ_1Q_2=
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 0 & 0 & 1 \\
+0 & -2 & 1 & 0 & -1 \\
+0 & -2 & -1 & 1 & -1 \\
+0 & -2 & -1 & -1 & -1
+\end{bmatrix}
+$$
+$$
+M_2 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & -1 & 1 & 0 & 0 \\
+0 & -1 & 0 & 1 & 0 \\
+0 & -1 & 0 & 0 & 1
+\end{bmatrix}
+, M_2M_1AQ_1Q_2 = 
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 & -2 \\
+0 & 0 & -1 & 1 & -2 \\
+0 & 0 & -1 & -1 & -2
+\end{bmatrix}
+$$
+
+$$
+Q_3=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 0
+\end{bmatrix}
+, M_2M_1AQ_1Q_2Q_3=
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 1 & 0 & 0 \\
+0 & 0 & -2 & 0 & 1 \\
+0 & 0 & -2 & 1 & -1 \\
+0 & 0 & -2 & -1 & -1
+\end{bmatrix}
+$$
+$$
+M_3 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & -1 & 1 & 0 \\
+0 & 0 & -1 & 0 & 1
+\end{bmatrix}
+, M_3M_2M_1AQ_1Q_2Q_3 = 
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 1 & 0 & 0 \\
+0 & 0 & -2 & 0 & 1 \\
+0 & 0 & 0 & 1 & -2 \\
+0 & 0 & 0 & -1 & -2
+\end{bmatrix}
+$$
+
+$$
+Q_4=
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 1 & 0
+\end{bmatrix}
+, M_3M_2M_1AQ_1Q_2Q_3Q_4=
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 1 & 0 & 0 \\
+0 & 0 & -2 & 1 & 0 \\
+0 & 0 & 0 & -2 & 1 \\
+0 & 0 & 0 & -2 & -1
+\end{bmatrix}
+$$
+$$
+M_4 = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -1 & 1
+\end{bmatrix}
+, M_4M_3M_2M_1AQ_1Q_2Q_3Q_4 = 
+\begin{bmatrix}
+1 & 1 & 0 & 0 & 0 \\ 
+0 & -2 & 1 & 0 & 0 \\
+0 & 0 & -2 & 1 & 0 \\
+0 & 0 & 0 & -2 & 1 \\
+0 & 0 & 0 & 0 & -2
+\end{bmatrix}
+= U
+$$
+For L, again we can use the formula we derived in lecture:
+$$
+L = M_1^{-1}M_2^{-1}M_3^{-1}M_4^{-1} = I + m_1e_1^T + m_2e_2^T + m_3e_3^T + m_4e_4^T = 
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\ 
+1 & 1 & 0 & 0 & 0 \\
+1 & 1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1 & 1
+\end{bmatrix} 
+$$
+$$
+Q = Q_1Q_2Q_3Q_4 = 
+\begin{bmatrix}
+0 & 1 & 0 & 0 & 0 \\ 
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0 & 0
+\end{bmatrix} 
+$$
+
+c)\\
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+n = 60;
+A = ones(n,n);
+A = A - triu(A);
+A = eye(n) - A;
+A = A + [ones(n-1,1); 0] * [zeros(1,n-1),1];
+Q = diag(ones(n-1,1),1);
+Q(n,1) = 1;
+[L1, U1, P1] = lu(A);
+fprintf("2^(59): %d, U1(n,n):%f\n",2^59 , U1(n,n));
+[L2, U2] = lu(A*Q);
+fprintf("max(U2):%f\n", max(max(abs(U2))));
+x = ones(n,1);
+b = A * x;
+y = L1 \ b;
+x1 = U1 \ y;
+fprintf("infinity norm of error matrix using patial pivoting:%f\n", norm(x - x1, inf));
+y = L2 \ b;
+z = U2 \ y;
+x2 = Q * z;
+fprintf("infinity norm of error matrix using complete pivoting:%f\n", norm(x - x2, inf));
+\end{lstlisting}
+\end{framed}
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+>> A3Q2
+2^(59): 576460752303423488, U1(n,n):576460752303423488.000000
+max(U2):2.000000
+infinity norm of error using patial pivoting:1.000000
+infinity norm of error using complete pivoting:0.000000
+\end{lstlisting}
+\end{framed}
+From the above output of the program, we can verify the statements in the question. Firstly, the max of U1 matrix is exactly the same as $2^{n-1} = 2^{59} = 576460752303423488$, while the max of U2 matrix is still 2, just as it was for the smaller version. The infinity norm for x - x1 is 1. Since infinity norm is max row sum, and x1 is a 60 x 1 matrix, it means that some value of x1 have an error of 1 to the exact solution which should be 1, making the relative error 100\%. We got a poor estimation of x. While at the same time, the infinity norm for x - x2 if 0.000000, showing that every term in x2 is at least very close to x's, which means x2 is a good estimation of x.
+\end{homeworkProblem}
+\clearpage
+%----------------------------------------------------------------------------------------
+%	PROBLEM 3
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Solving Matrix}\\
+
+a)
+$$
+P_1 = 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix} 
+,P_1A = 
+\begin{bmatrix}
+2 & -4 & -2\\ 
+-1 & 3 & 2\\
+1 & 1 & -1
+\end{bmatrix} 
+,M_1 = 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+1/2 & 1 & 0\\
+-1/2 & 0 & 1
+\end{bmatrix} 
+,M_1P_1A = 
+\begin{bmatrix}
+2 & -4 & -2\\ 
+0 & 1 & 1\\
+0 & 3 & 0
+\end{bmatrix} 
+$$
+$$
+P_2 = 
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix} 
+,P_2M_2P_1A = 
+\begin{bmatrix}
+2 & -4 & -2\\ 
+0 & 3 & 0\\
+0 & 1 & 1
+\end{bmatrix} 
+,M_2 = 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+0 & 1 & 0\\
+0 & -1/3 & 1
+\end{bmatrix} 
+,M_2P_2M_1P_1A = 
+\begin{bmatrix}
+2 & -4 & -2\\ 
+0 & 3 & 0\\
+0 & 0& 1
+\end{bmatrix} 
+=U 
+$$
+$$
+P = P_2P_1 = 
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix} 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix} 
+=
+\begin{bmatrix}
+0 & 1 & 0\\ 
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix} 
+$$
+Find L following the method in lecture note
+$$
+\hat{M_1} = P_2M_1P_2^T = 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+-1/2 & 1 & 0\\
+1/2 & 0 & 1
+\end{bmatrix}
+, \hat{m_1} = 
+\begin{bmatrix}0\\ 1/2\\ -1/2\end{bmatrix}
+$$
+$$
+L = \hat{M_1}^{-1}M_2^{-2} = I + \hat{m_1}e_1^T + m_2e_2^T = 
+\begin{bmatrix}
+1 & 0 & 0\\ 
+1/2 & 1 & 0\\
+-1/2 & 1/3 & 1
+\end{bmatrix}
+$$
+
+b)\\
+$Ax = b \Rightarrow PAx = Pb \Rightarrow LUx = Pb$ and then we can just solve using the usual $ Ly = Pb and Ux = y$
+$$
+Pb = 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix} 
+\begin{bmatrix}1\\ 0\\ 0\end{bmatrix} 
+= \begin{bmatrix}0\\ 0\\ 1\end{bmatrix}
+$$
+$$
+Ly = Pb \Rightarrow
+\begin{bmatrix}
+1 & 0 & 0\\
+1/2 & 1 & 0\\
+-1/2 & 1/3 & 1\\ 
+\end{bmatrix} 
+\begin{bmatrix}y_1\\ y_2\\ y_3\end{bmatrix} 
+= \begin{bmatrix}0\\ 0\\ 1\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}y_1\\ y_2\\ y_3\end{bmatrix} 
+=
+\begin{bmatrix}0\\ 0 - 1/2*y1 = 0\\ 1 + 1/2*y1 - 1/3*y2 = 1\end{bmatrix}
+$$
+$$
+ Ux = y \Rightarrow 
+ \begin{bmatrix}
+2 & -4 & -2\\ 
+0 & 3 & 0\\
+0 & 0& 1
+\end{bmatrix} 
+\begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix} 
+ = \begin{bmatrix}0\\ 0\\ 1\end{bmatrix}
+ \Rightarrow
+ \begin{bmatrix}x_1\\ x_2\\ x_3\end{bmatrix} 
+=
+\begin{bmatrix}(0 + 4x_2 + 2x_3)/2 = 1\\ 0/3 = 0\\ 1\end{bmatrix}
+= \begin{bmatrix}1\\ 0\\ 1\end{bmatrix}
+$$
+$$
+Ax = 
+\begin{bmatrix}
+-1 & 3 & 2\\
+2 & -4 & -2\\ 
+1 & 1 & -1
+\end{bmatrix} 
+\begin{bmatrix}1\\ 0\\ 1\end{bmatrix}
+ = \begin{bmatrix}1\\ 0\\ 0\end{bmatrix} = b
+$$
+
+c)
+$$
+u = 
+\begin{bmatrix}0\\ 0\\ 1\end{bmatrix} 
+,v = 
+\begin{bmatrix}0\\ 0\\ -1\end{bmatrix} 
+,uv^T = \begin{bmatrix}0\\ 0\\ 1\end{bmatrix} \begin{bmatrix}0 & 0 & -1\end{bmatrix}  = 
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\ 
+0 & 0 & -1
+\end{bmatrix} 
+$$
+
+d)\\
+Following the algorithm from text book, first we solve Az = u using LU factorization from (a):
+$$
+Pb = 
+\begin{bmatrix}
+0 & 1 & 0\\ 
+0 & 0 & 1\\
+1 & 0 & 0
+\end{bmatrix} 
+\begin{bmatrix}1\\ 0\\ 0\end{bmatrix} 
+= \begin{bmatrix}0\\ 0\\ 1\end{bmatrix}
+$$
+$$
+Ly = Pu \Rightarrow
+\begin{bmatrix}
+1 & 0 & 0\\
+1/2 & 1 & 0\\
+-1/2 & 1/3 & 1\\ 
+\end{bmatrix} 
+\begin{bmatrix}y_1\\ y_2\\ y_3\end{bmatrix} 
+= \begin{bmatrix}0\\ 1\\ 0\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}y_1\\ y_2\\ y_3\end{bmatrix} 
+=
+\begin{bmatrix}0\\ 1 - 1/2*y1 = 1\\ 0 + 1/2*y1 - 1/3*y2 = -1/3\end{bmatrix}
+$$
+$$
+Uz = y \Rightarrow 
+\begin{bmatrix}
+2 & -4 & -2\\ 
+0 & 3 & 0\\
+0 & 0& 1
+\end{bmatrix} 
+\begin{bmatrix}z_1\\ z_2\\ z_3\end{bmatrix} 
+ = \begin{bmatrix}0\\ 1\\ -1/3\end{bmatrix}
+ \Rightarrow
+ \begin{bmatrix}z_1\\ z_2\\ z_3\end{bmatrix} 
+=
+\begin{bmatrix}(0 + 4x_2 + 2x_3)/2 = 1/3\\ 1/3 \\ -1/3\end{bmatrix}
+= \begin{bmatrix}1/3\\ 1/3 \\ -1/3\end{bmatrix}
+$$
+Then using the same method, we solve for Ay = b. In fact, y is just x we computed in b:
+$$
+y = \begin{bmatrix}1\\ 0 \\ 1\end{bmatrix}
+$$
+Now we can compute x for $\hat{A}x = b$
+$$
+v^Ty =  \begin{bmatrix}0 & 0 & -1\end{bmatrix}\begin{bmatrix}1\\ 0 \\ 1\end{bmatrix} = -1, 
+v^Tz = \begin{bmatrix}0 & 0 & -1\end{bmatrix}\begin{bmatrix}1/3\\ 1/3 \\ -1/3\end{bmatrix} = 1/3
+$$
+$$
+x = y + \frac{v^Ty}{1- v^Tz}z 
+= \begin{bmatrix}1\\ 0 \\ 1\end{bmatrix} + \frac{-1}{1- 1/3}\begin{bmatrix}1/3\\ 1/3 \\ -1/3\end{bmatrix}
+= \begin{bmatrix}1\\ 0 \\ 1\end{bmatrix} - \frac{3}{2}\begin{bmatrix}1/3\\ 1/3 \\ -1/3\end{bmatrix} = \begin{bmatrix}1/2 \\ -1/2 \\ 3/2\end{bmatrix} 
+$$
+This is the result we want, we can verify that $\hat{A}x = b$.
+\end{homeworkProblem}
+%----------------------------------------------------------------------------------------
+%	PROBLEM 4
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Voice delay}\\
+
+a)
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function y = perm_a(p,x)
+    y = x;
+    for i = 1:length(p)
+        y([i p(i)]) = y([p(i) i]);
+    end
+end
+\end{lstlisting}
+\end{framed}
+
+b)\\
+A little comment on my method: The way q represent the permutation matrix P is where the 1 is for each row in P, which is the same as the order of rows for some vector x after doing a permutation Px. So I just pass in a vector v = [1,2,...,n], do a permutation Pv, the result would be the order of the rows, which is the same as q.
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function q = perm_b(p)
+    q = perm_a(p, (1:length(p)+1).').';
+end
+\end{lstlisting}
+\end{framed}
+
+c)
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function y = perm_c(q,x)
+    y = x;
+    for i = 1:length(q)
+        y(i) = x(q(i));
+    end
+end
+\end{lstlisting}
+\end{framed}
+
+Testing:\\
+The test is run with the following code.
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+p = [5, 4, 9, 10, 6, 8, 10, 9, 10];
+x = [1 : 10]';
+y1 = perm_a(p,x)
+q = perm_b(p)
+y2 = perm_c(q,x)
+\end{lstlisting}
+\end{framed}
+
+
+The output of the test
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+y1 =
+
+     5
+     4
+     9
+    10
+     6
+     8
+     2
+     3
+     7
+     1
+
+
+q =
+
+     5     4     9    10     6     8     2     3     7     1
+
+
+y2 =
+
+     5
+     4
+     9
+    10
+     6
+     8
+     2
+     3
+     7
+     1
+\end{lstlisting}
+\end{framed}
+
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 5
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\noindent \textit{Gradient descent with momentum}\\
+
+a)\\
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function p = perm_d(q)
+    p = zeros(1,length(q) - 1);
+    cur_x = 1:length(q);
+    position = 1:length(q); %stores the position of a value in cur_x
+    for i = 1:length(p)
+        j = position(q(i));
+        p(i) = j;
+        position(cur_x(j)) = i;
+        position(cur_x(i)) = j;
+        cur_x([i j]) = cur_x([j i]);
+    end
+end
+\end{lstlisting}
+\end{framed}
+The output for testing
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+>> p = [5, 4, 9, 10, 6, 8, 10, 9, 10]
+
+p =
+
+     5     4     9    10     6     8    10     9    10
+
+>> q = perm_b(p)
+
+q =
+
+     5     4     9    10     6     8     2     3     7     1
+
+>> p1 = perm_d(q)
+
+p1 =
+
+     5     4     9    10     6     8    10     9    10
+\end{lstlisting}
+\end{framed}
+My algorithm is in time proportional to $n$ because there is only one for loop which will run n times and the operations in the for loop are O(1)\\
+
+b)\\
+$Q = P_{n-1}.....P_2P_1 \Rightarrow det(Q) = det(P_{n-1}) \times det(P_{2}) \times ...... \times det(P_{1})$. For p(i) in vector p, if p(i) == i, it means ith row is changed with ith row, so $P_i$ is I, det($P_i$) = 1. Otherwise, det($P_i$) = -1.
+\begin{framed}
+\begin{lstlisting}[language=matlab]
+function determinant = detQ(p)
+    determinant = 1;
+    for i = 1:length(p)
+        if p(i) == i
+            determinant = determinant * 1;
+        else
+            determinant = determinant * -1;
+        end
+    end
+end
+\end{lstlisting}
+\end{framed}
+
+Prove the hint:\\
+if $P_k$ = I, we have proved in class by induction that diagonal matrix's determinant is the product of diagonal. So det(I) = 1*1*1..... = 1. For any elementary permutation matrix $P_k$ that is not I, we can obtain $P_k$ by interchange two rows of I. Then, we can prove $det(P_k) = -1$ by following induction:\\
+Induct on the matrix size n. $I_n$ denotes an identity matrix with size n, $P$ denotes to a row swapping elementary permutation matrix that is not I.\\
+Base Case: n = 2, 
+$I = \begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix}$, 
+$P_k = \begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix}$,
+$det(I) = 1, det(P_k) = -1 = -det(I)$\\
+Inductive step: \\
+$n > 2$. Assume for all $P$ with size (n-1) x (n-1), $det(P_k) = -det(I_{n-1}) = -1$\\
+Suppose $P^n$ is an n x n row swapping elementary permuataion matrix, row k and row l are swapped to produce $P^n$ from $I_n$.\\
+For a positive integer j such that $j \neq k, j \neq l$, we expand on row j to calculate det($P^n$). The 1 in j row must also be in column j because j is the two rows we swapped. Let $\hat{P}$ be the (n-1) x (n-1) matrix formed by crossing out row j, column j from $P^n$. $\hat{P}$ is also a row swapping elementary permutation matrix because the two swapped row are not crossed out. From assumption $det(\hat{P}) = -det(I_{n-1})$. Since $p_{jj}$ = 1, every element except $p_{ji}$ is 0:\\
+$det(P^n) = (-1)^{j+j}p_{jj}det(\hat{P}) = (-1)^{j+j}p_{jj}(-1)det(I_{n-1}) = -((-1)^{j+j}p_{jj}det(I_{n-1}))$\\
+If we expand on row j to calculate $det(I_n)$, $det(I_n) = (-1)^{j+j}p_{jj}det(I_{n-1})$\\
+$det(P^n) = -det(I_n) = -1$\\
+
+We can conclude that any row swapping elementary permutation matrix P that is not I, det(P) = -1
+\end{homeworkProblem}
+\clearpage
+%----------------------------------------------------------------------------------------
+\end{document}
